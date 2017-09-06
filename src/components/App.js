@@ -22,10 +22,29 @@ class App extends Component {
       .then(data => console.log(data))
   }
 
+  onInputValue = (value) => {
+    let updatedValue = encodeURIComponent(value.trim())
+    this.setState({
+      searchValue: updatedValue
+    })
+  }
+
+  updateSearchCriterion = (searchBy) => {
+    this.setState({
+      searchCriterion: searchBy
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <SearchHeader />
+        <SearchHeader
+          onSearchButtonClick={this.fetchMovies}
+          onCriterionButtonClick={this.updateSearchCriterion}
+          onInputValue={this.onInputValue}
+          criterion={this.state.searchCriterion}
+
+        />
         <MovieList
           onMovieClick  
           movies={this.state.movies}
