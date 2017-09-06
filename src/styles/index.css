@@ -1,0 +1,37 @@
+body {
+  text-align: center;
+  padding: 0;
+}
+
+.SearchHeader {
+  text-align: left;
+  display: block;
+  height: 200px;
+  padding: 30px;
+  margin: auto;
+  background-color: slategray;
+}
+
+.MoviePreview {
+  text-align: left;
+  float: left;
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  width: 200px;
+  height: 300px;
+  margin: 8px;
+  cursor: pointer;
+  background-color: gray;
+}
+
+.lowButtons {
+  display: inline-block;
+  padding: 15px;
+}
+
+.searchButton {
+  float: auto;
+  position: relative;
+  left: 20%;
+}
