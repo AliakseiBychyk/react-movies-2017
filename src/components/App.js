@@ -19,7 +19,7 @@ class App extends Component {
     console.log('state on search: ', this.state, ' ,url: ', url)
 
     fetch(url, {
-      method: 'GET',
+      method: 'GET'
     }).then(resp => resp.json())
       .then(data => this.setState({
         movies: (this.state.searchCriterion === 'director' && data.length !== 0)
@@ -49,7 +49,7 @@ class App extends Component {
 
   headerContent = () => {
     if (this.state.currentMovieId) {
-      let currentMovie = this.state.movies[this.state.currentMovieId]
+      let currentMovie = this.state.movies[this.state.currentMovieId - 1]
       console.log(this.state.currentMovieId)
       return (
         <MovieItem
@@ -68,12 +68,12 @@ class App extends Component {
     )
   }
 
-  render() {
+  render () {
     return (
-      <div className="App">
-        
+      <div className='App'>
+
         {this.headerContent()}
-        
+
         <MovieList
           movies={this.state.movies}
           onMovieClick={this.setMovie}

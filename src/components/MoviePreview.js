@@ -2,22 +2,21 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class MoviePreview extends Component {
-
   handleClick = () => {
     console.log(this.props.show_title)
-    this.props.onClick(this.props.unit)
+    this.props.onClick(this.props.id)
   }
 
-  render() {
+  render () {
     return (
       <div
-        className="MoviePreview"
+        className='MoviePreview'
         onClick={this.handleClick}
       >
         <img
           src={this.props.poster}
           alt={this.props.show_title}
-          className="moviePreviewImg" />  
+          className='moviePreviewImg' />
       </div>
     )
   }
