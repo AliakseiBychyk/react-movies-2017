@@ -26,9 +26,9 @@ class MoviePreview extends Component {
 MoviePreview.propTypes = {
   unit: PropTypes.number.isRequired,
   show_title: PropTypes.string.isRequired,
-  director: PropTypes.string.isRequired,
+  director: PropTypes.string,
   poster: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func
 }
 
 export default MoviePreview

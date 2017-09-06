@@ -12,6 +12,21 @@ body {
   background-color: slategray;
 }
 
+.MovieItem {
+  text-align: left;
+  display: block;
+  height: 400px;
+  padding: 30px;
+  margin: auto;
+  background-color: slategray;
+}
+
+.movieItemImg {
+  position: absolute;
+  height: 300px;
+  left: 20px;
+}
+
 .MoviePreview {
   text-align: left;
   float: left;
@@ -22,7 +37,12 @@ body {
   height: 300px;
   margin: 8px;
   cursor: pointer;
-  background-color: gray;
+}
+
+.moviePreviewImg {
+  position: absolute;
+  width: 200px;
+  object-fit: cover;
 }
 
 .lowButtons {

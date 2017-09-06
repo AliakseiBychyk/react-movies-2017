@@ -37,13 +37,13 @@ class SearchHeader extends Component {
             <Button
               onClick={this.setSearchByDirector}
               bsStyle={(this.props.criterion === 'director') ? 'primary' : 'default'}
-            >DIRECTOR</Button>
-          </div>
+            >DIRECTOR</Button>          
 
-          <Button className="searchButton"
-            onClick={this.props.onSearchButtonClick}
-          >SEARCH</Button>
-        
+            <Button className="searchButton"
+              onClick={this.props.onSearchButtonClick}
+            >SEARCH</Button>
+            
+          </div>
         </Form>
       </div>
     )

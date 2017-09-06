@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import SearchHeader from './SearchHeader'
 import MovieList from './MovieList'
+import MovieItem from './MovieItem'
 import '../styles/index.css'
 
 class App extends Component {
   state = {
     movies: [],
     searchCriterion: 'director',
-    searchValue: ''
+    searchValue: '',
+    currentMovieId: null
   }
 
   fetchMovies = () => {
@@ -19,7 +21,17 @@ class App extends Component {
     fetch(url, {
       method: 'GET',
     }).then(resp => resp.json())
-      .then(data => console.log(data))
+      .then(data => this.setState({
+        movies: (this.state.searchCriterion === 'director' && data.length !== 0)
+          ? data
+          : [data]
+      }))
+  }
+
+  setMovie = (id) => {
+    this.setState({
+      currentMovieId: id
+    })
   }
 
   onInputValue = (value) => {
@@ -35,19 +47,36 @@ class App extends Component {
     })
   }
 
+  headerContent = () => {
+    if (this.state.currentMovieId) {
+      let currentMovie = this.state.movies[this.state.currentMovieId]
+      console.log(this.state.currentMovieId)
+      return (
+        <MovieItem
+          {...currentMovie}
+        />
+      )
+    }
+    return (
+      <SearchHeader
+        onSearchButtonClick={this.fetchMovies}
+        onCriterionButtonClick={this.updateSearchCriterion}
+        onInputValue={this.onInputValue}
+        criterion={this.state.searchCriterion}
+
+      />
+    )
+  }
+
   render() {
     return (
       <div className="App">
-        <SearchHeader
-          onSearchButtonClick={this.fetchMovies}
-          onCriterionButtonClick={this.updateSearchCriterion}
-          onInputValue={this.onInputValue}
-          criterion={this.state.searchCriterion}
-
-        />
+        
+        {this.headerContent()}
+        
         <MovieList
-          onMovieClick  
           movies={this.state.movies}
+          onMovieClick={this.setMovie}
         />
       </div>
     )
